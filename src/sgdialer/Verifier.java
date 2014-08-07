@@ -14,21 +14,21 @@ class Verifier {
     public Verifier() {
         symbols = new char[38];
         //Fills the symbols array with alphabet characters
-        int a = (int) 'a'; //Get the ASCII number for a
-        int z = (int) 'z'; //Get the ASCII number for z
         int chr = (int) 'a'; //Integer for character, begining at a
-        for (int i = 0; i <= (z - a); i++) {
+        for (int i = 0; i <= 25; i++) {
+            symbols[i] = (char) (chr + i);
             //Message for testing
-            System.out.println(String.format("Writing character %s to array...", (char) (chr + i)));
-            symbols[i] = (char)(chr + i);
+            System.out.println(String.format("Writing character %s to array on pos %s...", (char) (chr + i), i));
+
         }
         //Fills the character array with number characters
-        int zero = (int)'0';
-        int nine = (int)'9';
-        chr = zero; //Setss the char to zero
-        for (int i = (z-a); i <= (z - a +9); i++){
+        chr = 48; //Sets the char to zero
+        for (int i = 26; i <= 36; i++) {
+            symbols[i] = (char)chr;
+            chr++;
             //Message for testing
-            System.out.println(String.format("Writing character %s to array...", (char) (chr + i)));
+            System.out.println(String.format("Writing character %s to array on pos %s...", (char) (chr + i), i));
+
         }
     }//Constructor end
 
