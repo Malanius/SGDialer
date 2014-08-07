@@ -2,6 +2,7 @@ package sgdialer;
 
 /**
  * Creates the symbol array
+ *
  * @author Malanius
  * @version 1.0
  */
@@ -41,14 +42,7 @@ class ArrayFiller {
         return symbols;
     }
 
-    /**
-     * @return the message
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    private String writeSymbols() {
+    public String writeSymbols() {
         String strSymb = "";
         for (int o = 0; o < symbols.length; o++) {
             strSymb += symbols[o];
@@ -56,7 +50,4 @@ class ArrayFiller {
         return strSymb;
     }
 
-    protected boolean verify() {
-        return true;
-    }//End of verify
 }//End of class
