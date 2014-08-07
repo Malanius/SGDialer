@@ -18,18 +18,19 @@ class Verifier {
         for (int i = 0; i <= 25; i++) {
             symbols[i] = (char) (chr + i);
             //Message for testing
-            System.out.println(String.format("Writing character %s to array on pos %s...", (char) (chr + i), i));
+            System.out.println(String.format("Writed character %s to array on pos %s...", (char) (chr + i), i));
 
         }
         //Fills the character array with number characters
-        chr = 48; //Sets the char to zero
-        for (int i = 26; i <= 36; i++) {
+        chr = (int)'0'; //Sets the char to zero
+        for (int i = 26; i <= 35; i++) {
             symbols[i] = (char)chr;
-            chr++;
             //Message for testing
-            System.out.println(String.format("Writing character %s to array on pos %s...", (char) (chr + i), i));
-
+            System.out.println(String.format("Writed character %s to array on pos %s...", (char) chr, i));
+            chr++;
         }
+        symbols[36] = '-';
+        symbols[37] = '.';
     }//Constructor end
 
     /**
