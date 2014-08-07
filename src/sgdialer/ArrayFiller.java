@@ -7,7 +7,7 @@ package sgdialer;
  */
 class ArrayFiller {
 
-    public char[] symbols = new char[38]; //Symbols array
+    private char[] symbols = new char[38]; //Symbols array
     private String message; //Output message of operations
 
     //Constructor
