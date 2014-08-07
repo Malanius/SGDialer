@@ -3,7 +3,7 @@ package sgdialer;
 /**
  * Creates the symbol array
  * @author Malanius
- * @version 0.0
+ * @version 1.0
  */
 class ArrayFiller {
 
@@ -17,7 +17,7 @@ class ArrayFiller {
         for (int i = 0; i <= 25; i++) {
             symbols[i] = (char) (chr + i);
             //Message for testing
-            System.out.println(String.format("[Verifier]: Writed character %s to array on pos %s...", (char) (chr + i), i));
+            System.out.println(String.format("[ArrayFiller]: Writed character %s to array on pos %s...", (char) (chr + i), i));
 
         }
         //Fills the character array with number characters
@@ -25,12 +25,12 @@ class ArrayFiller {
         for (int i = 26; i <= 35; i++) {
             symbols[i] = (char) chr;
             //Message for testing
-            System.out.println(String.format("[Verifier]: Writed character %s to array on pos %s...", (char) chr, i));
+            System.out.println(String.format("[ArrayFiller]: Writed character %s to array on pos %s...", (char) chr, i));
             chr++;
         }
         symbols[36] = '-';
         symbols[37] = '.';
-        System.out.print(String.format("[Verifier]: Created array of %s symbols: ", symbols.length));
+        System.out.print(String.format("[ArrayFiller]: Created array of %s symbols: ", symbols.length));
         System.out.println(writeSymbols());
     }//Constructor end
 
