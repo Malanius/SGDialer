@@ -11,11 +11,11 @@ public class Verifier {
     public Verifier(char[] symbols){
         this.symbols = symbols;
         //Testing message
-        System.out.print("[Verifier]: Sucessfully obtained symbol array: ");
+        System.err.print("[Verifier]: Sucessfully obtained symbol array: ");
         String strSymbols = "";
         for (int i = 0; i < this.symbols.length; i++){
             strSymbols += this.symbols[i]; 
         }
-        System.out.println(strSymbols);
+        System.err.println(strSymbols);
     }//End of Constructor
 }//End of class

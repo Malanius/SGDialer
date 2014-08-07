@@ -18,7 +18,7 @@ class ArrayFiller {
         for (int i = 0; i <= 25; i++) {
             symbols[i] = (char) (chr + i);
             //Message for testing
-            System.out.println(String.format("[ArrayFiller]: Writed character %s to array on pos %s...", (char) (chr + i), i));
+            System.err.println(String.format("[ArrayFiller]: Writed character %s to array on pos %s...", (char) (chr + i), i));
 
         }
         //Fills the character array with number characters
@@ -26,13 +26,13 @@ class ArrayFiller {
         for (int i = 26; i <= 35; i++) {
             symbols[i] = (char) chr;
             //Message for testing
-            System.out.println(String.format("[ArrayFiller]: Writed character %s to array on pos %s...", (char) chr, i));
+            System.err.println(String.format("[ArrayFiller]: Writed character %s to array on pos %s...", (char) chr, i));
             chr++;
         }
         symbols[36] = '-';
         symbols[37] = '.';
-        System.out.print(String.format("[ArrayFiller]: Created array of %s symbols: ", symbols.length));
-        System.out.println(writeSymbols());
+        System.err.print(String.format("[ArrayFiller]: Created array of %s symbols: ", symbols.length));
+        System.err.println(writeSymbols());
     }//Constructor end
 
     /**
