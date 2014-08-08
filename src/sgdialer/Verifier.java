@@ -27,7 +27,14 @@ public class Verifier {
         if (adress.length() == 7) {
             //Point ot orogin chceck # is only valid
             if (adress.endsWith("#")) {
-                return true;
+                if (this.checkRepeat(adress) == 0){
+                    System.err.println("Corect adress recevied.");
+                    return true;
+                }
+                else{
+                    System.err.println("[Verifier]: Repeating symbols detected.");
+                    return false;
+                }
             } else { //POO chcek fail
                 System.err.println(String.format("[Verifier]: Invalid point of origin: %s", adress.charAt(6)));
                 return false;
@@ -37,5 +44,17 @@ public class Verifier {
             System.err.println(String.format("[Verifier]: Invalid adress lenght detected: %s symbols.", adress.length()));
             return false;
         }//End of lengh chceck
+    }//End of verify
+
+    private int checkRepeat(String adress) {
+        int repeat = 0;
+        for (int i = 0; i < 7; i++) {
+            for (int o = 0; o < 7; o++){
+                if(adress.charAt(i) == adress.charAt(o)){
+                    repeat++;
+                }
+            }
+        }
+        return repeat;
     }
 }//End of class
