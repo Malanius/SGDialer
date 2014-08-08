@@ -29,6 +29,8 @@ public class SGDialer {
         System.out.print("Insert adress to dial: ");
         String adress = sc.nextLine();
         
+    }//End of main
+    public void writeMessage(String message){
+        System.out.println(message);
     }
-
-}
+}//End of class
