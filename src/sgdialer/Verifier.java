@@ -27,7 +27,7 @@ public class Verifier {
         if (adress.length() == 7) {
             //Point ot orogin chceck # is only valid
             if (adress.endsWith("#")) {
-                if (this.checkRepeat(adress) == 0){
+                if (this.checkRepeat(adress) == 7){
                     System.err.println("Corect adress recevied.");
                     return true;
                 }
@@ -47,6 +47,7 @@ public class Verifier {
     }//End of verify
 
     private int checkRepeat(String adress) {
+        //FIXME polish the repeat check, for now repeat = 7 means correct input as the each uniqe symbol finds itself...
         int repeat = 0;
         for (int i = 0; i < 7; i++) {
             for (int o = 0; o < 7; o++){
