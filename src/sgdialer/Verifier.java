@@ -29,12 +29,12 @@ public class Verifier {
             if (adress.endsWith("#")) {
                 return true;
             } else { //POO chcek fail
-                System.err.println(String.format("Invalid point of origin: %s", adress.charAt(6)));
+                System.err.println(String.format("[Verifier]: Invalid point of origin: %s", adress.charAt(6)));
                 return false;
             }//End of POO chceck
         } else {//Lengh chcek fail
             //Testing message
-            System.err.println(String.format("Invalid adress lenght detected: %s symbols.", adress.length()));
+            System.err.println(String.format("[Verifier]: Invalid adress lenght detected: %s symbols.", adress.length()));
             return false;
         }//End of lengh chceck
     }
