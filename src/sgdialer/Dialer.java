@@ -18,4 +18,7 @@ public class Dialer {
         }
         System.err.println(strSymbols);
     }//End of Constructor
+    public void dial(String adress){
+        
+    }
 }//End of class
