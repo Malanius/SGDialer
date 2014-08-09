@@ -4,7 +4,7 @@ package sgdialer;
  * Verifies validity of inputed adres
  *
  * @author Malanius
- * @version 0.0
+ * @version 0.5
  */
 public class Verifier {
 
