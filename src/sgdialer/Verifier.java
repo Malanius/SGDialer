@@ -24,6 +24,7 @@ public class Verifier {
 
     public boolean verify(String adress) {
         return (checkLenght(adress) && checkRepeat(adress) && checkPOO(adress));
+        //TODO add input check for valid symbols
     }//End of verify
 
     private boolean checkLenght(String adress) {
