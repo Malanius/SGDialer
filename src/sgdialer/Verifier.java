@@ -23,39 +23,46 @@ public class Verifier {
     }//End of Constructor
 
     public boolean verify(String adress) {
-        //Lenght check - curently only 7 symbol adresses accepted
-        if (adress.length() == 7) {
-            //Point ot orogin chceck # is only valid
-            if (adress.endsWith("#")) {
-                if (this.checkRepeat(adress) == 7){
-                    System.err.println("Corect adress recevied.");
-                    return true;
-                }
-                else{
-                    System.err.println("[Verifier]: Repeating symbols detected.");
-                    return false;
-                }
-            } else { //POO chcek fail
-                System.err.println(String.format("[Verifier]: Invalid point of origin: %s", adress.charAt(6)));
-                return false;
-            }//End of POO chceck
-        } else {//Lengh chcek fail
-            //Testing message
-            System.err.println(String.format("[Verifier]: Invalid adress lenght detected: %s symbols.", adress.length()));
-            return false;
-        }//End of lengh chceck
+        return (checkLenght(adress) && checkRepeat(adress) && checkPOO(adress));
     }//End of verify
 
-    private int checkRepeat(String adress) {
-        //FIXME polish the repeat check, for now repeat = 7 means correct input as the each uniqe symbol finds itself...
+    private boolean checkLenght(String adress) {
+        if (adress.length() == 7) {
+            System.err.println("[Verifier]: Correct adress lenght.");
+            return true;
+        } else {
+            System.err.println(String.format("[Verifier]: Invalid adress lenght detected: %s symbols.", adress.length()));
+            return false;
+        }
+    }//End of chceck lenght
+
+    private boolean checkPOO(String adress) {
+        if (adress.endsWith("#")) {
+            System.err.println("[Verifier]: Valid point of origin specified.");
+            return true;
+        } else {
+            System.err.println("[Verifier]: Invalid point of origin specified!");
+            return false;
+        }
+    }//End of  checkPOO
+
+    private boolean checkRepeat(String adress) {
+        //FIXME polish the repeat check, for now repeat == 7 means correct input as the each uniqe symbol finds itself...
         int repeat = 0;
         for (int i = 0; i < 7; i++) {
-            for (int o = 0; o < 7; o++){
-                if(adress.charAt(i) == adress.charAt(o)){
+            for (int o = 0; o < 7; o++) {
+                if (adress.charAt(i) == adress.charAt(o)) {
                     repeat++;
                 }
             }
         }
-        return repeat;
-    }
+        if (repeat == 7){
+            System.err.println("[Verifier]: Each symbol is uniqe.");
+            return true;
+        }
+        else{
+            System.err.println("[Verifier]: Repeating symbols detected.");
+            return false;
+        }
+    }//End of chcech repeat
 }//End of class
