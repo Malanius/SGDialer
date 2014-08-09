@@ -23,8 +23,7 @@ public class Verifier {
     }//End of Constructor
 
     public boolean verify(String adress) {
-        return (checkLenght(adress) && checkRepeat(adress) && checkPOO(adress));
-        //TODO add input check for valid symbols
+        return (checkLenght(adress) && checkPOO(adress) && checkRepeat(adress));
     }//End of verify
 
     private boolean checkLenght(String adress) {
