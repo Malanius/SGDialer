@@ -8,7 +8,7 @@ package sgdialer;
  */
 class ArrayFiller {
 
-    private char[] symbols = new char[38]; //Symbols array
+    private char[] symbols = new char[39]; //Symbols array
     private String message; //Output message of operations
 
     //Constructor
@@ -31,6 +31,7 @@ class ArrayFiller {
         }
         symbols[36] = '-';
         symbols[37] = '.';
+        symbols[38] = '#';
         System.err.print(String.format("[ArrayFiller]: Created array of %s symbols: ", symbols.length));
         System.err.println(writeSymbols());
     }//Constructor end
