@@ -8,7 +8,7 @@ package sgdialer;
  */
 public class Verifier {
 
-    private char symbols[] = new char[38];//Symbols array
+    private char symbols[];
     //Consrtructor
 
     public Verifier(char[] symbols) {
