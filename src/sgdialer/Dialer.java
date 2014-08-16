@@ -6,57 +6,70 @@ package sgdialer;
  * @version 0.0
  */
 public class Dialer {
+
     private int actualPos;
-    private char symbols[] = new char[38];//Symbols array
+    private char symbols[];//Symbols array
     //Consrtructor
-    public Dialer(char[] symbols){
+
+    public Dialer(char[] symbols) {
         this.symbols = symbols;
         actualPos = 0; //Since gate is restarted on each run
         //Testing message
         System.err.print("[Dialer]: Sucessfully obtained symbol array: ");
         String strSymbols = "";
-        for (int i = 0; i < this.symbols.length; i++){
-            strSymbols += this.symbols[i]; 
+        for (int i = 0; i < this.symbols.length; i++) {
+            strSymbols += this.symbols[i];
         }
         System.err.println(strSymbols);
     }//End of Constructor
-    public void dial(String adress){
+
+    public void dial(String adress) {
         char[] adressArray = adress.toCharArray();
-        for (int i = 0; i < adress.length(); i++){
+        for (int i = 0; i < adress.length(); i++) {
             System.err.printf("[Dialer]: Encoding symbol [%s]\n", adressArray[i]);
             ringMove(calculateRoute(getSymbolPos(adressArray[i])));
+            actualPos = getSymbolPos(adressArray[i]);
+            System.out.printf("Symbol [%s] susessfully encoded.", adressArray[i]);
+            System.err.printf("[Dialer]: Current pos is %s.\n", actualPos);
         }
     }
-    
-    private int getSymbolPos(char symb){
+
+    private int getSymbolPos(char symb) {
         int pos = -1;
-        do{
+        do {
             pos++;
-        }while (symbols[pos] != symb);
+        } while (symbols[pos] != symb);
         System.err.printf("[Dialer]: Found symbol %s at %s position.\n", symb, pos);
         return pos;
     }
-    private int calculateRoute(int pos){
-        int route = 0;
-        int actualToLeftBound = actualPos;
-        int actualToRightBound = symbols.length - actualPos;
-        int targetToLeftBound = pos;
-        int targetToRightBound = symbols.length - pos;
-        int routeToLeft = actualToLeftBound - targetToLeftBound;
-        System.err.printf("[Dialer]: Route to left is %s\n", routeToLeft);
-        int routeToRight = actualToRightBound - targetToRightBound;
-        System.err.printf("[Dialer]: Route to right is %s\n", routeToRight);
-        if (routeToRight < routeToLeft){
-            route = routeToRight;
-            System.err.printf("[Dialer]: Will move to right by %s steps.\n", routeToRight);
+
+    private int calculateRoute(int pos) {
+        int route;
+        //Steps to rotate in each diretion
+        int toLeft;
+        int toRight;
+        if (pos > actualPos) {
+            toRight = pos - actualPos;
+            toLeft = (actualPos + 1) + (symbols.length - pos);
+            System.err.printf("[Router]: Left:%s Right:%s\n", toLeft, toRight);
+        } else {
+            toRight = (symbols.length - actualPos) + (pos + 1);
+            toLeft = pos - actualPos;
+            System.err.printf("[Router]: Left:%s Right:%s\n", toLeft, toRight);
+        }
+        if (toRight >= toLeft){
+            System.err.printf("[Router]: Will move to left.\n");
+            route = toLeft * (-1);
         }
         else{
-            route = routeToLeft * (-1); //Negative output will move motors to left
-            System.err.printf("[Dialer]: Will move to left by %s steps.\n", routeToLeft);
+            System.err.printf("[Router]: Will move to right.\n");
+            route = toRight; //Negative values for left turning
         }
         return route;
-    }
-    public void ringMove(int route){
-        System.out.printf("[Dialer]: Moving motors by %s steps\n", route);
+    }//End of calculate route
+
+    public void ringMove(int route) {
+        System.out.printf("[Motors]: Moving motors by %s steps\n", route);
+        //Placeholder for motor moving code
     }
 }//End of class
