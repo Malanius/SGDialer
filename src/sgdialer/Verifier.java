@@ -31,7 +31,7 @@ public class Verifier {
             System.err.println("[Verifier]: Correct adress lenght.");
             return true;
         } else {
-            System.err.println(String.format("[Verifier]: Invalid adress lenght detected: %s symbols.", adress.length()));
+            System.err.printf("[Verifier]: Invalid adress lenght detected: %s symbols.\n", adress.length());
             return false;
         }
     }//End of chceck lenght
