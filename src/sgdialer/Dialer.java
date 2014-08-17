@@ -49,13 +49,13 @@ public class Dialer {
         int toLeft;
         int toRight;
         if (pos > actualPos) {
-            toRight = pos - actualPos;
-            toLeft = (actualPos + 1) + (symbols.length - pos);
-            System.err.printf("[Router]: Left:%s Right:%s\n", toLeft, toRight);
+            toRight = actualPos - pos;
+            toLeft = actualPos + (symbols.length - pos);
+            System.err.printf("[Router]: Left: %s Right: %s\n", toLeft, toRight);
         } else {
-            toRight = (symbols.length - actualPos) + (pos + 1);
+            toRight = (symbols.length - actualPos) + pos;
             toLeft = pos - actualPos;
-            System.err.printf("[Router]: Left:%s Right:%s\n", toLeft, toRight);
+            System.err.printf("[Router]: Left: %s Right: %s\n", toLeft, toRight);
         }
         if (toRight >= toLeft){
             System.err.printf("[Router]: Will move to left.\n");
