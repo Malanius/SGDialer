@@ -27,19 +27,21 @@ public class Dialer {
         char[] adressArray = adress.toCharArray();
         for (int i = 0; i < adress.length(); i++) {
             System.err.printf("[Dialer]: Encoding symbol [%s]\n", adressArray[i]);
-            ringMove(calculateRoute(getSymbolPos(adressArray[i])));
-            actualPos = getSymbolPos(adressArray[i]);
-            System.out.printf("Symbol [%s] susessfully encoded.", adressArray[i]);
+            ringMove(calculateRoute(getSymbolPos(adressArray[i],true)));
+            actualPos = getSymbolPos(adressArray[i],false);
+            System.out.printf("[Dialer]: Symbol [%s] susessfully encoded.\n", adressArray[i]);
             System.err.printf("[Dialer]: Current pos is %s.\n", actualPos);
         }
     }
 
-    private int getSymbolPos(char symb) {
+    private int getSymbolPos(char symb, boolean out) {
         int pos = -1;
         do {
             pos++;
         } while (symbols[pos] != symb);
-        System.err.printf("[Dialer]: Found symbol %s at %s position.\n", symb, pos);
+        if (out) {
+            System.err.printf("[Positioner]: Found symbol %s at %s position.\n", symb, pos);
+        }
         return pos;
     }
 
@@ -49,19 +51,18 @@ public class Dialer {
         int toLeft;
         int toRight;
         if (pos > actualPos) {
-            toRight = actualPos - pos;
+            toRight = actualPos + pos;
             toLeft = actualPos + (symbols.length - pos);
             System.err.printf("[Router]: Left: %s Right: %s\n", toLeft, toRight);
         } else {
             toRight = (symbols.length - actualPos) + pos;
-            toLeft = pos - actualPos;
+            toLeft = actualPos - pos;
             System.err.printf("[Router]: Left: %s Right: %s\n", toLeft, toRight);
         }
-        if (toRight >= toLeft){
+        if (toRight >= toLeft) {
             System.err.printf("[Router]: Will move to left.\n");
             route = toLeft * (-1);
-        }
-        else{
+        } else {
             System.err.printf("[Router]: Will move to right.\n");
             route = toRight; //Negative values for left turning
         }
